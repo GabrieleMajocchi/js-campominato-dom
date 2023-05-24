@@ -20,8 +20,7 @@ diff.addEventListener('click', function(){
 const main = document.querySelector("main");
 const Play = document.querySelector('#play')
 
-Play.addEventListener('click', 
-    function(){
+Play.addEventListener('click', function (){
         
         let bombs = randomfill( 16 , 1 , cells )
         main.classList.remove('bomb');
@@ -31,23 +30,31 @@ Play.addEventListener('click',
         for (let i = 1; i <= cells; i++) {
             const actualCell = createElement('div', 'cell', gamedifficulty);
             actualCell.innerHTML = i;
-            actualCell.addEventListener('click', function(){
+            actualCell.addEventListener('click', myfunction);
+            function myfunction (){
                 if(bombs.includes(parseInt(actualCell.innerHTML))){
                     gridElement.innerHTML= '';
                     main.classList.add('bomb');
                     console.log('Hai perso!');
                     console.log('Con un totale di:'+count+' punti');
+                    actualCell.removeEventListener('click', myfunction);
+                }else if(count === (cells - (bombs.length)-1)){
+                    console.log('Hai vinto!');
+                    gridElement.innerHTML= '';
+                    main.classList.add('win');
                 }else{
-                actualCell.classList.toggle('selected');
-                count++;
-                console.log(i);
+                    actualCell.classList.toggle('selected');
+                    count++;
+                    console.log(i);
+                    actualCell.removeEventListener('click', myfunction);
                 }
-            });
+            }
             gridElement.appendChild(actualCell);
         }
         console.log(bombs);
     }
 )
+
 
 
 // // ----------------
@@ -92,5 +99,6 @@ function randomfill(elements, min, max){
             numList.push(random);
         }
     }
+    numList.sort((a, b) => a - b);
     return numList;
 }
