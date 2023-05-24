@@ -27,6 +27,7 @@ Play.addEventListener('click',
         main.classList.remove('bomb');
         gridElement.innerHTML= '';
         gridElement.className = 'grid';
+        let count = 0;
         for (let i = 1; i <= cells; i++) {
             const actualCell = createElement('div', 'cell', gamedifficulty);
             actualCell.innerHTML = i;
@@ -35,8 +36,10 @@ Play.addEventListener('click',
                     gridElement.innerHTML= '';
                     main.classList.add('bomb');
                     console.log('Hai perso!');
+                    console.log('Con un totale di:'+count+' punti');
                 }else{
                 actualCell.classList.toggle('selected');
+                count++;
                 console.log(i);
                 }
             });
