@@ -11,6 +11,15 @@ main.bomb{
     height: 750px;
 }
 
+main.win{
+    background-color: transparent;
+    background-image: url(../img/win.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 750px;
+}
+
 main{
     background-color: #7fffd4;
     padding: 5rem 0;
