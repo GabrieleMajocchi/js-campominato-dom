@@ -30,7 +30,9 @@ Play.addEventListener('click', function (){
         for (let i = 1; i <= cells; i++) {
             const actualCell = createElement('div', 'cell', gamedifficulty);
             actualCell.innerHTML = i;
+
             actualCell.addEventListener('click', myfunction);
+            
             function myfunction (){
                 if(bombs.includes(parseInt(actualCell.innerHTML))){
                     gridElement.innerHTML= '';
@@ -45,7 +47,7 @@ Play.addEventListener('click', function (){
                 }else{
                     actualCell.classList.toggle('selected');
                     count++;
-                    console.log(i);
+                    console.log('Sei a:'+count+' punti');
                     actualCell.removeEventListener('click', myfunction);
                 }
             }
