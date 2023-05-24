@@ -1,0 +1,47 @@
+header img{
+    height: 100%;
+}
+
+main{
+    background-color: #7fffd4;
+    padding: 5rem 0;
+}
+
+div.grid{
+    height: 650px;
+    width: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.grid .cell{
+    cursor: zoom-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.easy{
+    width: calc( 100% / 10);
+    height: calc( 100% / 10);
+}
+
+div.medium{
+    width: calc( 100% / 9);
+    height: calc( 100% / 9);
+}
+
+div.hard{
+    width: calc( 100% / 7);
+    height: calc( 100% / 7);
+}
+
+div.grid,
+div.grid .cell{
+    border: 1px black solid;
+}
+
+div.grid .cell.selected{
+    background-color: aqua;
+}
