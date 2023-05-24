@@ -1,4 +1,3 @@
-// ? recupero il wrapper
 const gridElement = document.getElementById('grid');
 
 let cells = 100;
@@ -23,18 +22,24 @@ const Play = document.querySelector('#play')
 Play.addEventListener('click', 
     function(){
         
+        let bombs = randomfill( 10 , 1 , cells )
         gridElement.innerHTML= '';
         gridElement.className = 'grid';
         for (let i = 1; i <= cells; i++) {
             const actualCell = createElement('div', 'cell', gamedifficulty);
             actualCell.innerHTML = i;
             actualCell.addEventListener('click', function(){
+                if(bombs.includes(parseInt(actualCell.innerHTML))){
+                    actualCell.classList.toggle('bomb');
+                    console.log('Hai perso!');
+                }else{
                 actualCell.classList.toggle('selected');
                 console.log(i);
+                }
             });
-        
-            gridElement.appendChild(actualCell)
+            gridElement.appendChild(actualCell);
         }
+        console.log(bombs);
     }
 )
 
@@ -56,3 +61,30 @@ function createElement(tagName, className, difficulty){
     return cellElement;
 }
 
+/**
+ * A function that will return a random number that are between max and min
+ * @param {number} min Lowest number that can be generated
+ * @param {number} max Maximum number that can be generated
+ */
+function randomNumGen(min, max){
+    let random = Math.floor(Math.random() * max) + min;
+    return random;
+}
+
+/**
+ * A function that will add an ammoun of random number that are not the same between them based on how many elements we ask
+ * @param {number} elements Write the ammount of elements you want to insert in the array
+ * @param {number} min Lowest number that can be generated
+ * @param {number} max Maximum number that can be generated
+ */
+function randomfill(elements, min, max){
+    const numList = [];
+
+    while (numList.length < elements){
+        let random = randomNumGen(min, max);
+        if (!numList.includes(random)){
+            numList.push(random);
+        }
+    }
+    return numList;
+}
