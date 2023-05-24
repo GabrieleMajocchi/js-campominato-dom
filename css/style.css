@@ -2,6 +2,15 @@ header img{
     height: 100%;
 }
 
+main.bomb{
+    background-color: transparent;
+    background-image: url(../img/bomb.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 750px;
+}
+
 main{
     background-color: #7fffd4;
     padding: 5rem 0;

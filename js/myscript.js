@@ -17,12 +17,14 @@ diff.addEventListener('click', function(){
 }
 )
 
+const main = document.querySelector("main");
 const Play = document.querySelector('#play')
 
 Play.addEventListener('click', 
     function(){
         
         let bombs = randomfill( 10 , 1 , cells )
+        main.classList.remove('bomb');
         gridElement.innerHTML= '';
         gridElement.className = 'grid';
         for (let i = 1; i <= cells; i++) {
@@ -30,7 +32,8 @@ Play.addEventListener('click',
             actualCell.innerHTML = i;
             actualCell.addEventListener('click', function(){
                 if(bombs.includes(parseInt(actualCell.innerHTML))){
-                    actualCell.classList.toggle('bomb');
+                    gridElement.innerHTML= '';
+                    main.classList.add('bomb');
                     console.log('Hai perso!');
                 }else{
                 actualCell.classList.toggle('selected');
