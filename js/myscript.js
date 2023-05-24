@@ -23,7 +23,7 @@ const Play = document.querySelector('#play')
 Play.addEventListener('click', 
     function(){
         
-        let bombs = randomfill( 10 , 1 , cells )
+        let bombs = randomfill( 16 , 1 , cells )
         main.classList.remove('bomb');
         gridElement.innerHTML= '';
         gridElement.className = 'grid';
